@@ -6,8 +6,31 @@ const { getFirestore, Timestamp, FieldValue, Filter } = require('firebase-admin/
 const firebaseConfig=require('../firebaseConfig')
 const admin=require('../firebaseConfig')
 const Insurance=require('../models/insuranceSchema')
-const User=require('../models/authSchema')
-
+const User=require('../models/authSchema');
+const Company = require('../models/insuranceCompanySchema');
+router.post('/signup',async(req,res)=>{
+    const {company_name,email}=req.body;
+    try{
+        let company=Company()
+        company.company_name=company_name
+        company.email=email
+        company.insurance_uuid=uuid()
+        const userCredential=await admin.auth().createUser({
+            uid:company.insurance_uuid,
+            password:company.email,
+            displayName:company_name,
+            email:email,
+        })
+        if(userCredential){
+            console.log("user created")
+        }
+        await company.save();
+        res.status(201).json({"message":"successfully created","uid":company.insurance_uuid})
+    }catch(e){
+        console.log(e)
+        res.status(400).json({"message":"something went wrong"})
+    }
+})
 router.post('/add/:id',async(req,res)=>{
     const insurance_uuid=req.params.id;
     const {insurance_policy_no,patient_uuid,profile_image,user_name,age,sex,phone_no,email,nominee_details,address,aadhar_no,

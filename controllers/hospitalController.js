@@ -22,7 +22,7 @@ router.post('/signup',async(req,res)=>{
         H.hospital_name=hospital_name;
         H.hospital_id=hospital_id;
         H.location=location;
-        await H.save();
+        
         const userCredential=await admin.auth().createUser({
             uid:hospital_id,
             password:hospital_name+location,
@@ -32,6 +32,7 @@ router.post('/signup',async(req,res)=>{
         if(userCredential){
             console.log("user created")
         }
+        await H.save();
         res.status(201).json({"message":"successfully created"})
     }catch(e){
         console.log(e)
