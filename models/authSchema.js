@@ -201,6 +201,7 @@ const UserSchema=mongoose.Schema({
     "treatments_history":[TreatmentSchema],
     "allergies":[AllergiesSchema],
     "prescriptions":[PrescriptionSchema],
+    "medicines":[MedicineSchema],
     "lab_reports":[LabreportSchema],
 })
 

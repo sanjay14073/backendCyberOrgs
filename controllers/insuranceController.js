@@ -7,14 +7,16 @@ const firebaseConfig=require('../firebaseConfig')
 const admin=require('../firebaseConfig')
 const Insurance=require('../models/insuranceSchema')
 const User=require('../models/authSchema')
-router.post('/signup',async(req,res)=>{
+
+router.post('/add/:id',async(req,res)=>{
+    const insurance_uuid=req.params.id;
     const {insurance_policy_no,patient_uuid,profile_image,user_name,age,sex,phone_no,email,nominee_details,address,aadhar_no,
         sum_assured,
         number_of_premiums,
         name_of_policy
     }=req.body;
     try{
-        const insurance_uuid=uuid();
+      //  const insurance_uuid=uuid();
         try{
             let insurance=new Insurance()
             insurance.insurance_uuid=insurance_uuid
