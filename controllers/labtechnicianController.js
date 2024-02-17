@@ -39,6 +39,7 @@ router.post('/signup',async(req,res)=>{
                
             }catch(e){
                 console.log(e);
+                res.status(400).json({"message":"Some internal error has occured"})
             }
             
             //res.status(201).json({"message":"User created successfully"})
@@ -50,6 +51,7 @@ router.post('/signup',async(req,res)=>{
 
     }catch(e){
         console.log(e);
+        res.status(400).json({"message":"Some internal error has occured"})
     }
 
 })
