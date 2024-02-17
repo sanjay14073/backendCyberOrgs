@@ -128,6 +128,9 @@ const LabreportSchema=mongoose.Schema({
     "doctor_id":{
         type:String,
         required:true,
+    },
+    "techinican_id":{
+        type:String,
     }
 })
 
@@ -137,10 +140,10 @@ const UserSchema=mongoose.Schema({
         required:true,
         unique:true
     },
-    "password":{
-        type:String,
-        required:true
-    },
+    // "password":{
+    //     type:String,
+    //     required:true
+    // },
     "profile_image":{
         type:String,
     },

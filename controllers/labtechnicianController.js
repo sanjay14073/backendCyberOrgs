@@ -6,15 +6,7 @@ const {getAuth, EmailAuthProvider, reauthenticateWithCredential, signInWithCrede
 const {initializeApp}=require("firebase/app");
 const { getFirestore, Timestamp, FieldValue, Filter } = require('firebase-admin/firestore');
 const firebaseConfig=require('../firebaseConfig')
-// Initialize Firebase
-// const appf = initializeApp(firebaseConfig);
-// const authi = getAuth(appf);
-// var admin = require("firebase-admin");
-  
-// var serviceAccount = require('../secretAccountKey.json');
-// admin.initializeApp({
-//   credential: admin.credential.cert(serviceAccount)
-// });
+
 const admin=require('../firebaseConfig')
 
 router.post('/signup',async(req,res)=>{
