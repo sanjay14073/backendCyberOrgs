@@ -87,7 +87,7 @@ const VisitngSchema=mongoose.Schema({
     }],
     "techinician_id":{
         type:String,
-        required:true,
+       // required:true,
     },
     "test_performed":[
         {
@@ -96,10 +96,7 @@ const VisitngSchema=mongoose.Schema({
         }
     ],
     "test_reports":[PreviousRecordandReportsSchema],
-    // "followup":{
-    //     type:String,
-    //     required:true,
-    // },
+
     "disease_diagonosed":[DiseaseSchema],
     "medications":[MedicineSchema],
     "treatments":[TreatmentSchema],

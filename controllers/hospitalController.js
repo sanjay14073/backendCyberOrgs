@@ -13,6 +13,8 @@ const firebaseConfig=require('../firebaseConfig')
 var admin=require('../firebaseConfig')
 const router=require("express").Router()
 const Hospital=require('../models/hospitalsSchema')
+const Technican=require('../models/technicianSchema')
+const Doctor=require('../models/doctorSchema')
 const {uuid}=require('uuidv4')
 router.post('/signup',async(req,res)=>{
     const {hospital_name,location}=req.body;
@@ -38,4 +40,11 @@ router.post('/signup',async(req,res)=>{
         console.log(e)
     }
 })
+router.get('/getDoctorsandTechnicians/:id',async(req,res)=>{
+    let hospital_id=req.params.id;
+    let doctors=await Doctor.find({hospital_id})
+    let techinican=await Technican.find({hospital_id})
+    res.status(201).send({"Doctors":doctors,"Techinican":techinican})
+})
+
 module.exports=router;

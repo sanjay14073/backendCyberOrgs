@@ -6,6 +6,7 @@ const firebaseConfig=require('../firebaseConfig')
 const {uuid}=require('uuidv4')
 const admin=require('../firebaseConfig')
 const Doctor=require('../models/doctorSchema')
+const VistingFrom=require('../models/visitingSchema')
 router.post('/signup',async(req,res)=>{
     const {hospital_id,doctor_name,age,sex,speciality,department}=req.body;
     try{
@@ -36,12 +37,23 @@ router.post('/signup',async(req,res)=>{
         res.status(400).json({"message":"something went wrong"})
     }
 })
+// router.post('/createRecord',async(req,res)=>{
+   
+//     const {patient_id,doctor_id}=req.body;
+//     let response=await Doctor.findOne({doctor_id})
+//     if(!response){
+//         let form=VistingFrom()
+//         form.patient_id=patient_id;
 
-router.get('/vistingRecords/:id',async(req,res)=>{
-    let doctor_id=req.params.id;
-    
+//     }
+// })
+router.get('/vistingRecords',async(req,res)=>{
+    let {doctor_id}=req.body;
+    let response=await VistingFrom.find({doctor_id}) 
+    res.status(201).json(response)
 })
 router.post('/addVisitingRecord',async(req,res)=>{
+    let {doctor_id,patient_id,}=req.body
 
 })
 

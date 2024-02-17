@@ -73,7 +73,7 @@ router.get('/fetchDetails/:id',async(req,res)=>{
     }
 })
 router.post('/uploadTestReport',async(req,res)=>{
-
+   
 })
 
 

@@ -4,6 +4,10 @@ const emtUserSchema=mongoose.Schema({
         type:String,
         required:true,
     },
+    "hospital_id":{
+        type:String,
+        required:true,
+    },
     "emt_name":{
         type:String,
         required:true,
