@@ -25,8 +25,23 @@ router.post('/signup',async(req,res)=>{
             techinican.age=age;
             techinican.sex=sex;
             techinican.techinican_id=techinican_id;
-            await techinican.save();
-            res.status(201).json({"message":"User created successfully"})
+            try{
+                const userCredential=await admin.auth().createUser({
+                    uid:techinican_id,
+                    password:techinican_id+name,
+                    displayName:name,
+                })
+                if(userCredential){
+                    console.log("user created")
+                }
+                await techinican.save();
+                res.status(201).json({"message":"successfully created"})
+               
+            }catch(e){
+                console.log(e);
+            }
+            
+            //res.status(201).json({"message":"User created successfully"})
             }catch(e){
                 console.log(e);
                 res.status(400).json({"message":"Some internal error has occured"})

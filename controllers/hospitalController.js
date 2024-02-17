@@ -31,7 +31,7 @@ router.post('/signup',async(req,res)=>{
         if(userCredential){
             console.log("user created")
         }
-        res.json({"message":"successfully created"})
+        res.status(201).json({"message":"successfully created"})
     }catch(e){
         console.log(e)
     }
