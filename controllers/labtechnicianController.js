@@ -30,9 +30,12 @@ router.post('/signup',async(req,res)=>{
                     uid:techinican_id,
                     password:techinican_id+name,
                     displayName:name,
+                    email:`${name}techinician@uhs.ac.in`
                 })
                 if(userCredential){
                     console.log("user created")
+                }else{
+                    res.status(400).json({"message":"Someting went wrong while firebase creation"})
                 }
                 await techinican.save();
                 res.status(201).json({"message":"successfully created"})
@@ -55,9 +58,9 @@ router.post('/signup',async(req,res)=>{
     }
 
 })
-router.post('/login',async(req,res)=>{
+// router.post('/login',async(req,res)=>{
 
-})
+// })
 router.get('/fetchDetails/:id',async(req,res)=>{
     let techinican_id=req.params.id;
     try{

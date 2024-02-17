@@ -28,7 +28,7 @@ const DiseaseSchema=mongoose.Schema({
         type:String,
         required:true,
     },
-    "medicines":[MedicineSchema],
+    //"medicines":[MedicineSchema],
 })
 const HistorySchema=mongoose.Schema({
     "disease_name":{
@@ -39,7 +39,7 @@ const HistorySchema=mongoose.Schema({
         type:String,
         required:true,
     },
-    "medications":[MedicineSchema],
+   // "medications":[MedicineSchema],
 })
 const TreatmentSchema=mongoose.Schema({
     "treatments":{
@@ -111,6 +111,14 @@ const PreviousRecordandReportsSchema=mongoose.Schema({
     }
 })
 const LabreportSchema=mongoose.Schema({
+    "report_id":{
+        type:String,
+        returired:true,
+    },
+    "report_name":{
+        type:String,
+        required:true,
+    },
     "completed":{
         type:Boolean,
         required:true,
@@ -164,6 +172,10 @@ const UserSchema=mongoose.Schema({
         required:true
     },
     "email":{
+        type:String,
+        required:true,
+    },
+    "bloodGroup":{
         type:String,
         required:true,
     },

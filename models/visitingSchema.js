@@ -67,6 +67,9 @@ const PrescriptionSchema=mongoose.Schema({
     "doctor_id":{
         type:String,
         required:true,
+    },
+    "test_to_be_performed":{
+        type:String,
     }
 },{timestamps:true})
 const VisitngSchema=mongoose.Schema({

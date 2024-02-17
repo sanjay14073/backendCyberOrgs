@@ -16,6 +16,7 @@ router.post('/signup',async(req,res)=>{
         allergies,
         prescriptions,
         lab_reports,
+        bloodGroup,
     }=req.body;
     try{
         let user=User()
@@ -39,6 +40,7 @@ router.post('/signup',async(req,res)=>{
         user.allergies=allergies;
         user.prescriptions=prescriptions;
         user.lab_reports=lab_reports;
+        user.bloodGroup=bloodGroup;
         try{
             const userCredential=await admin.auth().createUser({
                 uid:patient_uuid,
@@ -48,6 +50,8 @@ router.post('/signup',async(req,res)=>{
             })
             if(userCredential){
                 console.log("user created")
+            }else{
+                res.status(400).json({"message":"Someting went wrong while firebase creation"})
             }
             await user.save();
             res.status(201).json({"message":"successfully created"})

@@ -27,6 +27,7 @@ router.post('/signup',async(req,res)=>{
             uid:hospital_id,
             password:hospital_name+location,
             displayName:hospital_name,
+            email:`${hospital_name}@uhs.ac.in`
         })
         if(userCredential){
             console.log("user created")
