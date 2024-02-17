@@ -1,12 +1,13 @@
 const router=require('express').Router()
-const uuid=require('uuid')
+const {uuid}=require('uuidv4')
 const emtUser=require('../models/emtUserSchema')
 const admin=require('../firebaseConfig')
 router.post('/signup',async(req,res)=>{
     const {emt_name,emt_email,emt_phone_no}=req.body;
     try{
         let emtuser=emtUser()
-        emtuser.emt_uuid=uuid()
+       let smuid=uuid()
+        emtuser.emt_uuid=smuid;
         emtuser.emt_name=emt_name
         emtuser.emt_email=emt_email
         emtuser.emt_phone_no=emt_phone_no
@@ -25,7 +26,7 @@ router.post('/signup',async(req,res)=>{
         res.status(201).json({"message":"user created successfully","uuid":emtuser.emt_uuid})
     }catch(e){
         console.log(e)
-        res.status(400).json({"message":"done","uid":emt_uuid})
+        res.status(400).json({"message":"done"})
     }
 })
 

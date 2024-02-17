@@ -3,7 +3,7 @@ const {getAuth, EmailAuthProvider, reauthenticateWithCredential, signInWithCrede
 const {initializeApp}=require("firebase/app");
 const { getFirestore, Timestamp, FieldValue, Filter } = require('firebase-admin/firestore');
 const firebaseConfig=require('../firebaseConfig')
-const uuid=require('uuid')
+const {uuid}=require('uuidv4')
 const admin=require('../firebaseConfig')
 const Doctor=require('../models/doctorSchema')
 router.post('/signup',async(req,res)=>{
@@ -17,6 +17,7 @@ router.post('/signup',async(req,res)=>{
         doctor.sex=sex;
         doctor.speciality=speciality;
         doctor.department=department;
+        doctor.doctor_email=`${doctor_name+speciality+department}@uhs.ac.in`
         const userCredential=await admin.auth().createUser({
             uid:doctor.doctor_id,
             password:doctor_name+doctor.doctor_id,
