@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "958352063686",
+    "project_id": "ehr-user",
+    "storage_bucket": "ehr-user.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:958352063686:android:f5a8207b79ac5d69042bc7",
+        "android_client_info": {
+          "package_name": "com.example.ehr_user"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtKKFJ3l3YHgPZwjCwEnprAtj1yIibxXo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -18,6 +18,9 @@
     "mongoose": "^8.1.2",
     "nodemailer": "^6.9.9",
     "nodemon": "^3.0.3",
-    "passport": "^0.7.0"
+    "passport": "^0.7.0",
+    "uuidv4": "^6.2.13",
+    "firebase": "^9.22.2",
+    "firebase-admin": "^11.9.0"
   }
 }

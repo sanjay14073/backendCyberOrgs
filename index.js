@@ -6,19 +6,21 @@ const authController=require('./controllers/authControllers')
 const doctorController=require('./controllers/doctorController')
 const emtController=require('./controllers/emtController')
 const insuranceController=require('./controllers/insuranceController')
-const labtechinicianController=require('./controllers/labtechinicianController')
+const labtechinicianController=require('./controllers/labtechnicianController')
+const hospitalController=require('./controllers/hospitalController')
+const userController=require('./controllers/userController')
 require('dotenv').config();
 //Connect to the database
 const db=mongoose.connect(`${process.env.MONGO_URL}`).then(()=>{console.log("successfully connected to mongo db")}).catch((err)=>{console.log(err)})
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
-app.use('/user',authController)
+app.use('/user',userController)
 app.use('/doctor',doctorController)
 app.use('/emt',emtController)
 app.use('/insurance',insuranceController)
-app.use('/labtechinicianController',labtechinicianController)
-
+app.use('/labtechinician',labtechinicianController)
+app.use('/hospital',hospitalController)
 const PORT=process.env.PORT||3000;
 app.listen(PORT,(req,res)=>{
     console.log("Port started in port 3000")

@@ -1,6 +1,6 @@
 const mongoose=require('mongoose')
 const HosptialSchema=mongoose.Schema({
-    "hospital_uuid":{
+    "hospital_id":{
         type:String,
         required:true,
         unique:true,

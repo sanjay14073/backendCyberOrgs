@@ -124,7 +124,7 @@ const LabreportSchema=mongoose.Schema({
         type:Date,
         required:true,
     },
-    "test_reports":[PreviousRecordandReportsSchema],
+    "sub_test_reports":[PreviousRecordandReportsSchema],
     "doctor_id":{
         type:String,
         required:true,

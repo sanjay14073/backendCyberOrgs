@@ -1,6 +1,6 @@
 const mongoose=require('mongoose')
 const DoctorSchema=mongoose.Schema({
-    "doctor_uuid":{
+    "doctor_id":{
         type:String,
         required:true,
         unique:true,

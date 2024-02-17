@@ -93,10 +93,10 @@ const VisitngSchema=mongoose.Schema({
         }
     ],
     "test_reports":[PreviousRecordandReportsSchema],
-    "followup":{
-        type:String,
-        required:true,
-    },
+    // "followup":{
+    //     type:String,
+    //     required:true,
+    // },
     "disease_diagonosed":[DiseaseSchema],
     "medications":[MedicineSchema],
     "treatments":[TreatmentSchema],
