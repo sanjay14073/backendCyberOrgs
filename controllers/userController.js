@@ -54,7 +54,7 @@ router.post('/signup',async(req,res)=>{
                 res.status(400).json({"message":"Someting went wrong while firebase creation"})
             }
             await user.save();
-            res.status(201).json({"message":"successfully created"})
+            res.status(201).json({"message":"successfully created","uid":patient_uuid})
         }catch(e){
             console.log(e);
             res.status(400).json({"message":"Some internal error has occured"})

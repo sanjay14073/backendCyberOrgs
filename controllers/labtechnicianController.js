@@ -25,6 +25,7 @@ router.post('/signup',async(req,res)=>{
             techinican.age=age;
             techinican.sex=sex;
             techinican.techinican_id=techinican_id;
+            techinican.techinican_email= `${name}techinician@uhs.ac.in`;
             try{
                 const userCredential=await admin.auth().createUser({
                     uid:techinican_id,
@@ -38,7 +39,7 @@ router.post('/signup',async(req,res)=>{
                     res.status(400).json({"message":"Someting went wrong while firebase creation"})
                 }
                 await techinican.save();
-                res.status(201).json({"message":"successfully created"})
+                res.status(201).json({"message":"successfully created","uid":techinican_id})
                
             }catch(e){
                 console.log(e);

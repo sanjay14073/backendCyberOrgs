@@ -13,6 +13,10 @@ const HosptialSchema=mongoose.Schema({
         type:String,
         required:true,
     },
+    "hospital_email":{
+        type:String,
+        required:true,
+    }
 },{ timestamps: true });
 const Hospital=mongoose.model("Hospital",HosptialSchema);
 module.exports=Hospital;

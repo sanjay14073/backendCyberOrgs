@@ -22,7 +22,7 @@ router.post('/signup',async(req,res)=>{
         H.hospital_name=hospital_name;
         H.hospital_id=hospital_id;
         H.location=location;
-        
+        H.hospital_email=`${hospital_name}@uhs.ac.in`
         const userCredential=await admin.auth().createUser({
             uid:hospital_id,
             password:hospital_name+location,

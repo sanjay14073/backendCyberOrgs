@@ -20,6 +20,10 @@ const TechnicanDetailsSchema=mongoose.Schema({
         type:String,
         required:true,
     },
+    "techician_email":{
+        type:String,
+        required:true,
+    }
 
 },{timestamps:true})
 const Technican=mongoose.model("Technician",TechnicanDetailsSchema);

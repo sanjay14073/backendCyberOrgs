@@ -28,6 +28,10 @@ const DoctorSchema=mongoose.Schema({
     "department":{
         type:String,
         required:true,
+    },
+    "doctor_email":{
+        type:String,
+        required:true,
     }
 })
 const Doctor=mongoose.model("Doctor",DoctorSchema);
