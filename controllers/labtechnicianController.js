@@ -7,7 +7,8 @@ const {initializeApp}=require("firebase/app");
 const { getFirestore, Timestamp, FieldValue, Filter } = require('firebase-admin/firestore');
 const firebaseConfig=require('../firebaseConfig')
 
-const admin=require('../firebaseConfig')
+const admin=require('../firebaseConfig');
+const User = require('../models/authSchema');
 
 router.post('/signup',async(req,res)=>{
     const {hospital_id,name,age,sex}=req.body;
@@ -25,7 +26,7 @@ router.post('/signup',async(req,res)=>{
             techinican.age=age;
             techinican.sex=sex;
             techinican.techinican_id=techinican_id;
-            techinican.techinican_email= `${name}techinician@uhs.ac.in`;
+            techinican.techician_email= `${name}techinician@uhs.ac.in`;
             try{
                 const userCredential=await admin.auth().createUser({
                     uid:techinican_id,
@@ -38,6 +39,8 @@ router.post('/signup',async(req,res)=>{
                 }else{
                     res.status(400).json({"message":"Someting went wrong while firebase creation"})
                 }
+                //techinican.email=
+
                 await techinican.save();
                 res.status(201).json({"message":"successfully created","uid":techinican_id})
                
@@ -62,6 +65,7 @@ router.post('/signup',async(req,res)=>{
 // router.post('/login',async(req,res)=>{
 
 // })
+//this is not required
 router.get('/fetchDetails/:id',async(req,res)=>{
     let techinican_id=req.params.id;
     try{
@@ -72,8 +76,20 @@ router.get('/fetchDetails/:id',async(req,res)=>{
         res.status(400),json({"message":"Something went wrong"})
     }
 })
-router.post('/uploadTestReport',async(req,res)=>{
-   
+
+//Just use this route to fetch all the records of the
+router.post('/uploadTestReport/:id',async(req,res)=>{
+  let {uuid,lab_reports}=req.body;
+  let response=await User.findOne({uuid})
+  if(response){
+    console.log(response['lab_reports'])
+    response['lab_reports'].push(lab_reports)
+    console.log(response['lab_reports'])
+    await response.save()
+    res.status(201).json({"message":"success"})
+  }else{
+    res.status(400).json({"message":"Something went wrong"})
+  }
 })
 
 

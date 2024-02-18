@@ -30,7 +30,7 @@ router.post('/signup',async(req,res)=>{
             res.status(400).json({"message":"Someting went wrong while firebase creation"})
         }
 
-        res.status(201).json({"message":"user created successfully","uuid":emtuser.emt_uuid})
+        res.status(201).json({"message":"user created successfully","uid":emtuser.emt_uuid})
     }catch(e){
         console.log(e)
         res.status(400).json({"message":"done"})

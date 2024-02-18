@@ -9,12 +9,17 @@ const insuranceController=require('./controllers/insuranceController')
 const labtechinicianController=require('./controllers/labtechnicianController')
 const hospitalController=require('./controllers/hospitalController')
 const userController=require('./controllers/userController')
+const cors=require('cors')
 require('dotenv').config();
 //Connect to the database
 const db=mongoose.connect(`${process.env.MONGO_URL}`).then(()=>{console.log("successfully connected to mongo db")}).catch((err)=>{console.log(err)})
 
+//All middleware instenaited
 app.use(express.urlencoded({extended:true}))
+app.use(cors())
 app.use(express.json())
+
+//Targeting different routes
 app.use('/user',userController)
 app.use('/doctor',doctorController)
 app.use('/emt',emtController)

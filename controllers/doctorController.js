@@ -7,6 +7,8 @@ const {uuid}=require('uuidv4')
 const admin=require('../firebaseConfig')
 const Doctor=require('../models/doctorSchema')
 const VistingFrom=require('../models/visitingSchema')
+//const USer=require('../models/authSchema');
+const User = require('../models/authSchema');
 router.post('/signup',async(req,res)=>{
     const {hospital_id,doctor_name,age,sex,speciality,department}=req.body;
     try{
@@ -47,15 +49,34 @@ router.post('/signup',async(req,res)=>{
 
 //     }
 // })
-router.get('/vistingRecords',async(req,res)=>{
-    let {doctor_id}=req.body;
-    let response=await VistingFrom.find({doctor_id}) 
-    res.status(201).json(response)
-})
-router.post('/addVisitingRecord',async(req,res)=>{
-    let {doctor_id,patient_id,}=req.body
+// router.get('/vistingRecords',async(req,res)=>{
+//     let {doctor_id}=req.body;
+//     let response=await VistingFrom.find({doctor_id}) 
+//     res.status(201).json(response)
+// })
+// router.post('/addVisitingRecord',async(req,res)=>{
+//     let {doctor_id,patient_id,}=req.body
 
-})
+// })
 
+//add the Prescription from the doctor to the user
+
+router.post('/addPrescription/:id',async(req,res)=>{
+    const {doctor_id}=req.params.id
+    let {uuid,prescriptionForm}=req.body;
+    console.log(prescriptionForm)
+    try{
+    let response=await User.findOne({uuid})
+   // console.log(response)
+    response['prescriptions'].push(prescriptionForm)
+    //console.log(response)
+    await response.save();
+    res.status(201).json({"message":"success"})
+   
+    }catch(e){
+        console.log(e)
+        res.status(400).json({"message":"something went wrong"})
+    }
+})
 
 module.exports=router;

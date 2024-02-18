@@ -8,7 +8,7 @@ const DoctorSchema=mongoose.Schema({
     "hospital_id":{
         type:String,
         required:true,
-        unique:true,
+        //unique:true,
     },
     "doctor_name":{
         type:String,
