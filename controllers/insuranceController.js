@@ -31,6 +31,15 @@ router.post('/signup',async(req,res)=>{
         res.status(400).json({"message":"something went wrong"})
     }
 })
+router.post('/signin',async(req,res)=>{
+    const {insurance_uuid}=req.body;
+    let response=await Company.find({insurance_uuid})
+    if(response){
+        res.status(201).json({"message":"Logged in Successfully"})
+    }else{
+        res.status(400).json({"message":"Invalid Credentials"})
+    }
+})
 router.post('/add/:id',async(req,res)=>{
     const insurance_uuid=req.params.id;
     const {insurance_policy_no,patient_uuid,profile_image,user_name,age,sex,phone_no,email,nominee_details,address,aadhar_no,
